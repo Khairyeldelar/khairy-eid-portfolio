@@ -1,9 +1,6 @@
-# Delivery checklist
+# Simplified redesign checklist
 
-- [ ] Complete the remaining portfolio UI files and ensure all planned sections render.
-- [ ] Run a production build and verify navigation, language switching, theme switching, filtering, search, and contact form feedback.
-- [ ] Capture desktop and mobile previews and fix visible responsive issues.
-- [ ] Save a stable checkpoint and deliver the preview link.
-- [x] Create a private GitHub repository named `khairy-eid-portfolio`.
-- [x] Commit the current project files with a descriptive message.
-- [x] Push the project to the repository and verify the remote URL.
+- [x] Replace the long editorial layout with a compact card-based home page.
+- [x] Keep only essential content: profile, selected work, skills, tutorials, and contact.
+- [x] Preserve Arabic/English switching, dark mode, mobile menu, and project filtering.
+- [x] Verify the simplified layout on desktop and mobile, then save a new stable checkpoint.
