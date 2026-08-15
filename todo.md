@@ -1,6 +1,6 @@
-# Simplified redesign checklist
+# Project details modal checklist
 
-- [x] Replace the long editorial layout with a compact card-based home page.
-- [x] Keep only essential content: profile, selected work, skills, tutorials, and contact.
-- [x] Preserve Arabic/English switching, dark mode, mobile menu, and project filtering.
-- [x] Verify the simplified layout on desktop and mobile, then save a new stable checkpoint.
+- [x] Add localized detail fields and selected-project state.
+- [x] Open a simple accessible modal when a project card or detail link is clicked.
+- [x] Support close button, backdrop click, and Escape key.
+- [x] Verify desktop/mobile behavior and save a stable checkpoint.
