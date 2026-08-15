@@ -1,6 +1,6 @@
-# Project details modal checklist
+# Independent GitHub delivery checklist
 
-- [x] Add localized detail fields and selected-project state.
-- [x] Open a simple accessible modal when a project card or detail link is clicked.
-- [x] Support close button, backdrop click, and Escape key.
-- [x] Verify desktop/mobile behavior and save a stable checkpoint.
+- [ ] Remove visible Manus-specific analytics and branding references from the website shell.
+- [ ] Add safe external-project URL fields and keep unavailable project links non-clickable.
+- [ ] Add GitHub Pages configuration and deployment documentation.
+- [ ] Build, verify, commit, and push the independent version to GitHub.
