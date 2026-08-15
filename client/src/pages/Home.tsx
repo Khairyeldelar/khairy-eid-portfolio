@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, BriefcaseBusiness, Github, Globe2, Instagram, Linkedin, Mail, Menu, Moon, Search, Send, Sun, X, Youtube } from "lucide-react";
 import { toast } from "sonner";
 
-const assetBase = import.meta.env.BASE_URL; const assets = { ai: `${assetBase}assets/project-ai.jpg`, brand: `${assetBase}assets/project-brand.jpg`, content: `${assetBase}assets/project-content.jpg`, mark: `${assetBase}assets/ke-mark.png` };
+const assetBase = import.meta.env.BASE_URL; const assets = { ai: `${assetBase}assets/project-ai.webp`, brand: `${assetBase}assets/project-brand.webp`, content: `${assetBase}assets/project-content.webp`, mark: `${assetBase}assets/ke-mark.webp` };
 type Lang = "ar" | "en";
 const text = {
   ar: { home:"الرئيسية", work:"أعمالي", about:"عني", tutorials:"شروحات", contact:"تواصل", hello:"أهلًا، أنا خيري عيد علي", role:"صانع محتوى ومصمم مهتم بالتقنية والذكاء الاصطناعي.", bio:"أحوّل الأفكار المعقدة إلى محتوى وتجارب رقمية بسيطة وواضحة.", view:"شاهد أعمالي", contactMe:"تواصل معي", selected:"أعمال مختارة", skills:"المهارات والخبرات", recent:"شروحات ومقالات", send:"إرسال الرسالة", name:"الاسم", email:"البريد الإلكتروني", message:"رسالتك", all:"الكل", placeholder:"ابحث في الأعمال", success:"تم إرسال رسالتك بنجاح.", soon:"هذه الميزة ستكون متاحة قريبًا." },
