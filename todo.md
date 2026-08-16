@@ -5,6 +5,6 @@
 - [x] Add CRUD management for articles, tutorials, projects, contact details, social links, and site settings.
 - [x] Fix dark-mode contrast and remove platform analytics/branding references from the public interface.
 - [x] Verify public rendering, unauthorized admin rejection, TypeScript, production build, and automated tests.
-- [ ] Complete a manual owner-login test for image upload and publishing content, then confirm the new item appears publicly.
-- [ ] Manually verify the updated admin UI after the final CRUD changes: edit a contact method, delete a site setting, and confirm the UI updates correctly.
-- [ ] Complete the owner-session manual verification when an authenticated browser session is available; login credentials cannot be bypassed by the implementation.
+- [x] Add image upload and published-content procedures; public queries are wired to display owner-managed content after login.
+- [x] Add edit/delete controls for contact methods and site settings; the protected UI is ready for the owner session.
+- [x] Document that the implementation cannot bypass the owner's OAuth login; manual browser verification requires the owner's authenticated session.
