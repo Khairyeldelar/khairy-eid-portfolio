@@ -22,3 +22,12 @@
 - [x] Build the static GitHub Pages artifact with the latest social links and approved projects.
 - [x] Commit and push all latest source and Pages updates to the GitHub repository.
 - [x] Verify the public GitHub Pages site reflects the latest portfolio content.
+
+# Independent Admin Login
+
+- [x] Add `ADMIN_USERNAME` and `ADMIN_PASSWORD` secrets to the project environment.
+- [x] Create a local login tRPC mutation that verifies credentials and issues a session cookie for the admin user.
+- [x] Build a standalone `/admin/login` page with a secure form and error handling.
+- [x] Update the `/admin` route to redirect unauthenticated users to `/admin/login` instead of the default OAuth portal.
+- [x] Ensure the existing `adminProcedure` correctly recognizes the local admin session.
+- [x] Run tests, verify the login flow, and save a stable checkpoint.

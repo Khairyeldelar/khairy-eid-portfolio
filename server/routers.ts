@@ -2,7 +2,10 @@ import { COOKIE_NAME } from "@shared/const";
 import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
+import { TRPCError } from "@trpc/server";
 import { systemRouter } from "./_core/systemRouter";
+import { sdk } from "./_core/sdk";
+import { verifyLocalAdminCredentials, LOCAL_ADMIN_OPEN_ID } from "./localAdmin";
 import { storagePut } from "./storage";
 import {
   createContent,
@@ -17,6 +20,7 @@ import {
   updateContent,
   upsertContactMethod,
   upsertSetting,
+  upsertUser,
 } from "./db";
 
 const contentInput = z.object({
@@ -31,6 +35,26 @@ export const appRouter = router({
   system: systemRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
+    adminLogin: publicProcedure.input(z.object({ username: z.string(), password: z.string() })).mutation(async ({ input, ctx }) => {
+      if (!verifyLocalAdminCredentials(input.username, input.password)) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid credentials" });
+      }
+      try {
+        await upsertUser({
+        openId: LOCAL_ADMIN_OPEN_ID,
+        name: "Khairy Eid Ali",
+        loginMethod: "local-admin",
+        role: "admin",
+          lastSignedIn: new Date(),
+        });
+      } catch (error) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      }
+      const sessionToken = await sdk.createSessionToken(LOCAL_ADMIN_OPEN_ID, { name: "Admin" });
+      const cookieOptions = getSessionCookieOptions(ctx.req);
+      ctx.res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 30 * 24 * 60 * 60 * 1000 });
+      return { success: true } as const;
+    }),
     logout: publicProcedure.mutation(({ ctx }) => {
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });

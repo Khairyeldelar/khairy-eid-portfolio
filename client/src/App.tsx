@@ -10,11 +10,14 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import AdminPage from "./pages/AdminPage";
+import AdminLogin from "./pages/AdminLogin";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/khairy-eid-portfolio/admin/login" component={AdminLogin} />
       <Route path="/admin" component={AdminPage} />
       <Route path="/khairy-eid-portfolio/admin" component={AdminPage} />
       <Route path="/" component={Home} />

@@ -22,8 +22,9 @@ const emptyForm: ContentForm = { kind: "article", slug: "", titleAr: "", titleEn
 
 export default function AdminPage() {
   const { user, loading } = useAuth();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [section, setSection] = useState<"content" | "settings" | "contacts">("content");
+  useEffect(() => { if (!loading && !user) setLocation("/admin/login"); }, [loading, user, setLocation]);
   useEffect(() => { const value = new URLSearchParams(location.split("?")[1] || "").get("section"); if (value === "settings" || value === "contacts" || value === "content") setSection(value); }, [location]);
   const [form, setForm] = useState<ContentForm>(emptyForm);
   const [message, setMessage] = useState("");
@@ -46,7 +47,7 @@ export default function AdminPage() {
   const grouped = useMemo(() => ({ project: content.filter(item => item.kind === "project"), article: content.filter(item => item.kind === "article"), tutorial: content.filter(item => item.kind === "tutorial") }), [content]);
 
   if (loading) return <div className="min-h-screen grid place-items-center text-muted-foreground">جارٍ التحقق من الصلاحيات…</div>;
-  if (!user) return <DashboardLayout><div /></DashboardLayout>;
+  if (!user) return <div className="min-h-screen grid place-items-center text-muted-foreground">جارٍ تحويلك إلى تسجيل الدخول…</div>;
   if (user.role !== "admin") return <div className="min-h-screen grid place-items-center p-6" dir="rtl"><div className="max-w-md text-center rounded-3xl border border-destructive/30 bg-card p-8 shadow-sm"><ShieldAlert className="mx-auto mb-4 text-destructive" size={36}/><h1 className="text-2xl font-bold">هذه الصفحة خاصة</h1><p className="mt-3 text-muted-foreground">لا تملك صلاحية الدخول إلى لوحة التحكم.</p></div></div>;
 
   const update = (key: keyof ContentForm, value: string | boolean | number) => setForm(current => ({ ...current, [key]: value }));
