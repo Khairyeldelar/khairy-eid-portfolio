@@ -31,6 +31,13 @@ describe("admin access control", () => {
 
   it("allows an admin context to reach the admin content list", async () => {
     const caller = appRouter.createCaller(contextFor("admin"));
-    await expect(caller.admin.content.list()).resolves.toEqual([]);
+    const content = await caller.admin.content.list();
+    expect(Array.isArray(content)).toBe(true);
+    expect(content).toEqual(expect.arrayContaining([
+      expect.objectContaining({ kind: "project", slug: "podcast-mix" }),
+      expect.objectContaining({ kind: "project", slug: "music-montage" }),
+      expect.objectContaining({ kind: "project", slug: "app-design-tutorials" }),
+      expect.objectContaining({ kind: "project", slug: "chatgpt-egyptian-civilization" }),
+    ]));
   });
 });

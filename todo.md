@@ -14,3 +14,8 @@
 - [x] Add the confirmed X profile https://x.com/EldelarOfficial to visible contact methods with an X icon.
 - [x] Verify both links in the public contact query and responsive homepage UI.
 - [x] Run Vitest, TypeScript, production build, and save a stable checkpoint.
+- [x] Collect the real project titles, bilingual descriptions, categories, tools, URLs, and thumbnail images from verified public sources.
+- [x] Present externally discovered project candidates for owner approval before replacing experimental records.
+- [x] Replace the experimental project records in the database-backed content workflow with the four approved public projects.
+- [x] Verify the real projects render publicly with working links and images.
+- [x] Run tests and save a stable checkpoint after the project migration.
