@@ -13,7 +13,9 @@ import { toast } from "sonner";
 
 const assetBase = import.meta.env.BASE_URL; const assets = { ai: `${assetBase}assets/project-ai.webp`, brand: `${assetBase}assets/project-brand.webp`, content: `${assetBase}assets/project-content.webp`, mark: `${assetBase}assets/ke-mark.webp` };
 type Lang = "ar" | "en";
-const socialIcon = (type: string) => type === "facebook" ? <Facebook size={16}/> : type === "youtube" ? <Youtube size={16}/> : type === "instagram" ? <Instagram size={16}/> : type === "linkedin" ? <Linkedin size={16}/> : type === "spotify" ? <Music2 size={16}/> : type === "filmfreeway" ? <Film size={16}/> : <Globe2 size={16}/>;
+const TikTokIcon = ({ size = 16 }: { size?: number }) => <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M15.5 3c.3 2.2 1.5 3.6 3.5 4.1v3.1c-1.4 0-2.7-.4-3.8-1.1v6.3a5.7 5.7 0 1 1-5.7-5.7c.4 0 .8 0 1.2.1v3.2a2.6 2.6 0 1 0 1.4 2.4V3h3.4Z" fill="currentColor"/><path d="M14.1 4.2v10.6a4 4 0 1 1-4.6-4" stroke="#69C9D0" strokeWidth="1.4" strokeLinecap="round"/><path d="M15.6 3.4c.5 1.8 1.6 3 3.4 3.5" stroke="#EE1D52" strokeWidth="1.3" strokeLinecap="round"/></svg>;
+const XPlatformIcon = ({ size = 16 }: { size?: number }) => <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.7 2H22l-7.2 8.2L23.3 22h-6.6l-5.2-6.8L5.6 22H2.3l7.7-8.8L1.7 2h6.7l4.7 6.2L18.7 2Zm-1.2 17.7h1.8L7.4 4.2H5.5l12 15.5Z"/></svg>;
+const socialIcon = (type: string) => type === "facebook" ? <Facebook size={16}/> : type === "youtube" ? <Youtube size={16}/> : type === "instagram" ? <Instagram size={16}/> : type === "linkedin" ? <Linkedin size={16}/> : type === "spotify" ? <Music2 size={16}/> : type === "tiktok" ? <TikTokIcon/> : type === "filmfreeway" ? <Film size={16}/> : type === "x" ? <XPlatformIcon/> : <Globe2 size={16}/>;
 const approvedSocialContacts = [
   { id: "facebook", type: "facebook", label: "Facebook", value: "https://www.facebook.com/khairy.eldelar" },
   { id: "youtube", type: "youtube", label: "YouTube", value: "https://www.youtube.com/@khairyeldelar" },
@@ -21,6 +23,8 @@ const approvedSocialContacts = [
   { id: "spotify", type: "spotify", label: "Spotify", value: "https://open.spotify.com/artist/02WMRl9JaUbpuDGj6y78t0" },
   { id: "linkedin", type: "linkedin", label: "LinkedIn", value: "https://www.linkedin.com/in/%D8%AE%D9%8A%D8%B1%D9%8A-%D8%A7%D9%84%D8%AF%D9%8A%D9%84%D8%B1-khairy-eldelar-51251a225" },
   { id: "filmfreeway", type: "filmfreeway", label: "FilmFreeway", value: "https://filmfreeway.com/Khairy.eldelar/photos" },
+  { id: "tiktok", type: "tiktok", label: "TikTok", value: "https://www.tiktok.com/@khairy_eldelar1" },
+  { id: "x", type: "x", label: "X", value: "https://x.com/EldelarOfficial" },
 ];
 const text = {
   ar: { home:"الرئيسية", work:"أعمالي", about:"عني", tutorials:"شروحات", contact:"تواصل", hello:"أهلًا، أنا خيري عيد علي", role:"صانع محتوى ومصمم مهتم بالتقنية والذكاء الاصطناعي.", bio:"أحوّل الأفكار المعقدة إلى محتوى وتجارب رقمية بسيطة وواضحة.", view:"شاهد أعمالي", contactMe:"تواصل معي", selected:"أعمال مختارة", skills:"المهارات والخبرات", recent:"شروحات ومقالات", send:"إرسال الرسالة", name:"الاسم", email:"البريد الإلكتروني", message:"رسالتك", all:"الكل", placeholder:"ابحث في الأعمال", success:"تم إرسال رسالتك بنجاح.", soon:"هذه الميزة ستكون متاحة قريبًا." },
