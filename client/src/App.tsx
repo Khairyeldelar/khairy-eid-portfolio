@@ -9,10 +9,14 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import AdminPage from "./pages/AdminPage";
 
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
+      <Route path="/admin" component={AdminPage} />
+      <Route path="/khairy-eid-portfolio/admin" component={AdminPage} />
       <Route path="/" component={Home} />
       <Route path="/index.html" component={Home} />
       <Route path="/khairy-eid-portfolio/" component={Home} />
