@@ -19,6 +19,6 @@
 - [x] Replace the experimental project records in the database-backed content workflow with the four approved public projects.
 - [x] Verify the real projects render publicly with working links and images.
 - [x] Run tests and save a stable checkpoint after the project migration.
-- [ ] Build the static GitHub Pages artifact with the latest social links and approved projects.
-- [ ] Commit and push all latest source and Pages updates to the GitHub repository.
-- [ ] Verify the public GitHub Pages site reflects the latest portfolio content.
+- [x] Build the static GitHub Pages artifact with the latest social links and approved projects.
+- [x] Commit and push all latest source and Pages updates to the GitHub repository.
+- [x] Verify the public GitHub Pages site reflects the latest portfolio content.
