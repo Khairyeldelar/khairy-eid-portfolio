@@ -1,8 +1,8 @@
-# Article thumbnail sharing upgrade
+# Approved public profile links
 
-- [x] Add thumbnail URL and storage-key fields to article/tutorial content records.
-- [x] Add a dedicated thumbnail upload control and preview in the owner dashboard.
-- [x] Persist both returned thumbnail URL and storage key through create/update mutations.
-- [x] Add unit coverage proving thumbnail URL and storage key fields are produced for uploaded media.
-- [x] Use the thumbnail in the public reader and server-rendered Open Graph/Twitter share metadata.
-- [x] Verify TypeScript, Vitest, production build, server restart, and responsive public rendering.
+- [x] Add the approved Facebook, YouTube, Instagram, Spotify, LinkedIn, and FilmFreeway links as visible contact methods.
+- [x] Add dedicated platform icons and a safe public fallback for the approved links.
+- [x] Verify the public contact query returns all six stored rows.
+- [x] Verify the six destinations: Facebook and YouTube opened publicly; Instagram, Spotify, LinkedIn, and FilmFreeway reached their intended public/profile destinations, with platform login walls noted where applicable.
+- [x] Run TypeScript, tests, production build, and responsive screenshot checks.
+- [x] Save a stable checkpoint after the links are connected.
