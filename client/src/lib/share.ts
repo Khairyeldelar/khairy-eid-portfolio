@@ -2,7 +2,7 @@ export type ShareLinks = { facebook: string; x: string; whatsapp: string };
 
 export function articleUrl(origin: string, pathname: string, slug?: string) {
   const base = `${origin}${pathname}`;
-  return slug ? `${base}#article-${encodeURIComponent(slug)}` : base;
+  return slug ? `${origin.replace(/\/$/, "")}/share/${encodeURIComponent(slug)}` : base;
 }
 
 export async function copyText(text: string, writeText: (value: string) => Promise<void>, fallback: (value: string) => void) {

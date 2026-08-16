@@ -3,7 +3,7 @@ import { articleUrl, buildShareLinks, copyText } from "./share";
 
 describe("article sharing", () => {
   it("builds a stable hash URL for a published article", () => {
-    expect(articleUrl("https://example.com", "/portfolio/", "my article")).toBe("https://example.com/portfolio/#article-my%20article");
+    expect(articleUrl("https://example.com", "/portfolio/", "my article")).toBe("https://example.com/share/my%20article");
   });
 
   it("copies through the clipboard when available", async () => {

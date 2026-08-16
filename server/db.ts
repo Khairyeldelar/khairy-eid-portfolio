@@ -48,6 +48,13 @@ export async function getUserByOpenId(openId: string) {
   return result[0];
 }
 
+export async function getContentBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const rows = await db.select().from(contentItems).where(eq(contentItems.slug, slug)).limit(1);
+  return rows[0];
+}
+
 export async function listPublishedContent(kind?: "project" | "article" | "tutorial") {
   const db = await getDb();
   if (!db) return [];

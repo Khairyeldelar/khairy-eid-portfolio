@@ -24,7 +24,7 @@ const contentInput = z.object({
   titleAr: z.string().min(1).max(255), titleEn: z.string().min(1).max(255),
   excerptAr: z.string().optional(), excerptEn: z.string().optional(), bodyAr: z.string().optional(), bodyEn: z.string().optional(),
   category: z.string().optional(), tools: z.string().optional(), projectUrl: z.string().url().optional().or(z.literal("")),
-  imageUrl: z.string().optional(), imageKey: z.string().optional(), published: z.boolean().default(true), sortOrder: z.number().int().default(0),
+  imageUrl: z.string().optional(), imageKey: z.string().optional(), thumbnailUrl: z.string().optional(), thumbnailKey: z.string().optional(), published: z.boolean().default(true), sortOrder: z.number().int().default(0),
 });
 
 export const appRouter = router({

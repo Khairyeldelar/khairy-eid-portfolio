@@ -27,6 +27,8 @@ export const contentItems = mysqlTable("content_items", {
   projectUrl: varchar("projectUrl", { length: 500 }),
   imageUrl: varchar("imageUrl", { length: 1000 }),
   imageKey: varchar("imageKey", { length: 500 }),
+  thumbnailUrl: varchar("thumbnailUrl", { length: 1000 }),
+  thumbnailKey: varchar("thumbnailKey", { length: 500 }),
   published: boolean("published").default(true).notNull(),
   sortOrder: int("sortOrder").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
