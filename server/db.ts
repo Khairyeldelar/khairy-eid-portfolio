@@ -1,4 +1,4 @@
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, not } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { contentItems, contactMethods, InsertUser, siteSettings, users } from "../drizzle/schema";
 import { ENV } from "./_core/env";
@@ -94,7 +94,20 @@ export async function deleteContent(id: number) {
 export async function listSettings() {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(siteSettings).orderBy(asc(siteSettings.settingKey));
+  return db.select().from(siteSettings).where(not(eq(siteSettings.settingKey, "__admin_password_hash"))).orderBy(asc(siteSettings.settingKey));
+}
+
+export async function getPrivateSetting(settingKey: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  const rows = await db.select().from(siteSettings).where(eq(siteSettings.settingKey, settingKey)).limit(1);
+  return rows[0];
+}
+
+export async function savePrivateSetting(settingKey: string, value: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await db.insert(siteSettings).values({ settingKey, value }).onDuplicateKeyUpdate({ set: { value } });
 }
 
 export async function upsertSetting(input: typeof siteSettings.$inferInsert) {

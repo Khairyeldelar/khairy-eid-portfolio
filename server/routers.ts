@@ -5,7 +5,7 @@ import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { systemRouter } from "./_core/systemRouter";
 import { sdk } from "./_core/sdk";
-import { verifyLocalAdminCredentials, LOCAL_ADMIN_OPEN_ID } from "./localAdmin";
+import { ADMIN_PASSWORD_SETTING_KEY, hashAdminPassword, verifyAdminPassword, verifyLocalAdminCredentials, LOCAL_ADMIN_OPEN_ID } from "./localAdmin";
 import { storagePut } from "./storage";
 import {
   createContent,
@@ -21,6 +21,8 @@ import {
   upsertContactMethod,
   upsertSetting,
   upsertUser,
+  getPrivateSetting,
+  savePrivateSetting,
 } from "./db";
 
 const contentInput = z.object({
@@ -39,6 +41,10 @@ export const appRouter = router({
       if (!verifyLocalAdminCredentials(input.username, input.password)) {
         throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid credentials" });
       }
+      const passwordSetting = await getPrivateSetting(ADMIN_PASSWORD_SETTING_KEY);
+      if (!(await verifyAdminPassword(input.password, passwordSetting?.value))) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid credentials" });
+      }
       try {
         await upsertUser({
         openId: LOCAL_ADMIN_OPEN_ID,
@@ -53,6 +59,17 @@ export const appRouter = router({
       const sessionToken = await sdk.createSessionToken(LOCAL_ADMIN_OPEN_ID, { name: "Admin" });
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: 30 * 24 * 60 * 60 * 1000 });
+      return { success: true } as const;
+    }),
+    changeAdminPassword: adminProcedure.input(z.object({ currentPassword: z.string().min(1), newPassword: z.string().min(8), confirmPassword: z.string().min(8) })).mutation(async ({ input }) => {
+      if (input.newPassword !== input.confirmPassword) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Passwords do not match" });
+      }
+      const passwordSetting = await getPrivateSetting(ADMIN_PASSWORD_SETTING_KEY);
+      if (!(await verifyAdminPassword(input.currentPassword, passwordSetting?.value))) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Current password is incorrect" });
+      }
+      await savePrivateSetting(ADMIN_PASSWORD_SETTING_KEY, await hashAdminPassword(input.newPassword));
       return { success: true } as const;
     }),
     logout: publicProcedure.mutation(({ ctx }) => {

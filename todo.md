@@ -31,3 +31,10 @@
 - [x] Update the `/admin` route to redirect unauthenticated users to `/admin/login` instead of the default OAuth portal.
 - [x] Ensure the existing `adminProcedure` correctly recognizes the local admin session.
 - [x] Run tests, verify the login flow, and save a stable checkpoint.
+
+# Admin Password Change
+
+- [x] Add a protected password-change procedure that verifies the current password and confirmation.
+- [x] Store a new password hash in a private database setting used by local admin login without exposing the password to the client.
+- [x] Add a password-change form inside the admin settings section.
+- [x] Test success and failure paths, verify the UI, and save a stable checkpoint.
