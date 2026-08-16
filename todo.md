@@ -1,5 +1,5 @@
-# GitHub Pages publication checklist
+# GitHub Pages 404 verification
 
-- [ ] Verify the public repository and Pages workflow status.
-- [ ] Confirm whether GitHub Pages has been enabled for the repository.
-- [ ] Provide the final Pages URL or the exact one-step setting still required.
+- [x] Check the exact published URL and current Pages status.
+- [x] Confirm the deployed artifact contains `index.html` at the expected path.
+- [x] Fix the public path or deployment source if needed, then verify from the public URL.
