@@ -38,3 +38,11 @@
 - [x] Store a new password hash in a private database setting used by local admin login without exposing the password to the client.
 - [x] Add a password-change form inside the admin settings section.
 - [x] Test success and failure paths, verify the UI, and save a stable checkpoint.
+
+# Game Project and Lightweight Portfolio
+
+- [x] Add the public game https://khairyeldelar.github.io/ as a portfolio project with a clear play link.
+- [x] Replace the public contact email with khairy.eldelar50@gmail.com in database-backed and fallback content.
+- [x] Simplify the public page by reducing secondary sections and keeping the main profile, projects, contact links, and contact form.
+- [x] Verify the full-stack and GitHub Pages versions and run tests/build.
+- [ ] Save a stable checkpoint after the game, email, and lightweight portfolio update.
