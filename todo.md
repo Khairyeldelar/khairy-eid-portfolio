@@ -62,3 +62,10 @@
 - [x] Ensure the public game card and any game reading view use the latest uploaded image.
 - [x] Verify the image in the browser, run tests/build, and save a stable checkpoint.
 
+# GitHub Sync After Image Fix
+
+- [ ] Build the latest static GitHub Pages artifact with the image-rendering fix.
+- [ ] Commit and push the latest source and Pages changes to GitHub.
+- [ ] Verify GitHub Actions and the public GitHub Pages site.
+- [ ] Save a stable checkpoint after synchronization.
+
