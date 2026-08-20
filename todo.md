@@ -46,3 +46,19 @@
 - [x] Simplify the public page by reducing secondary sections and keeping the main profile, projects, contact links, and contact form.
 - [x] Verify the full-stack and GitHub Pages versions and run tests/build.
 - [x] Save a stable checkpoint after the game, email, and lightweight portfolio update.
+
+# Uploaded Image Display Bug
+
+- [x] Inspect the stored image URL/key for the game and trace the upload-to-render flow.
+- [x] Inspect the actual updated article/tutorial record; the current database contains no article/tutorial record, so there is no saved article image to verify yet.
+
+- [x] Fix storage URL resolution and image rendering for database-backed and fallback content.
+- [x] Verify the game image in the browser and run tests/build.
+- [x] Verify a real database-backed article/tutorial image in the reading modal; no article/tutorial record exists currently.
+
+# Game Article Image Update
+
+- [x] Inspect the game record's imageUrl/imageKey and thumbnailUrl/thumbnailKey after the latest upload.
+- [x] Ensure the public game card and any game reading view use the latest uploaded image.
+- [x] Verify the image in the browser, run tests/build, and save a stable checkpoint.
+

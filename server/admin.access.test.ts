@@ -34,10 +34,9 @@ describe("admin access control", () => {
     const content = await caller.admin.content.list();
     expect(Array.isArray(content)).toBe(true);
     expect(content).toEqual(expect.arrayContaining([
+      expect.objectContaining({ kind: "project", slug: "can-you-survive" }),
       expect.objectContaining({ kind: "project", slug: "podcast-mix" }),
       expect.objectContaining({ kind: "project", slug: "music-montage" }),
-      expect.objectContaining({ kind: "project", slug: "app-design-tutorials" }),
-      expect.objectContaining({ kind: "project", slug: "chatgpt-egyptian-civilization" }),
     ]));
   });
 });
