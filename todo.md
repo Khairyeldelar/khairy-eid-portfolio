@@ -45,4 +45,4 @@
 - [x] Replace the public contact email with khairy.eldelar50@gmail.com in database-backed and fallback content.
 - [x] Simplify the public page by reducing secondary sections and keeping the main profile, projects, contact links, and contact form.
 - [x] Verify the full-stack and GitHub Pages versions and run tests/build.
-- [ ] Save a stable checkpoint after the game, email, and lightweight portfolio update.
+- [x] Save a stable checkpoint after the game, email, and lightweight portfolio update.
